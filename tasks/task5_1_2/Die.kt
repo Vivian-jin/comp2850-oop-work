@@ -12,10 +12,11 @@ fun rollDie(sides: Int) {
 }
 fun readInt(prompt:String):Int{
     print(prompt)
-    val input=readln().toInt()
+    val input=readln()
+    return input.toInt()
     }
 fun main(){
     print("rolling simulation")
-    val  sides=readln("please rolling a side(4, 6, 8, 10, 12, 20): ")
+    val  sides=readInt("please rolling a side(4, 6, 8, 10, 12, 20): ")
     rollDie(sides)
 }
