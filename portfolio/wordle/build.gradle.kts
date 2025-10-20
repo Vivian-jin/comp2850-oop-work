@@ -36,3 +36,6 @@ application {
 tasks.named<JavaExec>("run") {
     standardInput = System.`in`
 }
+detekt {
+    autoCorrect = true
+}
