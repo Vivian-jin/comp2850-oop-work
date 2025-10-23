@@ -16,15 +16,13 @@ class WordleTest : StringSpec({
         }
     }
 
-    "evaluateGuess should correctly mark letters (0=absent,1=wrong position,2=correct)" {
+    "evaluateGuess should correctly mark letters (0=not match, 1=match)" {
         val result1 = evaluateGuess("apple", "apply")
-        result1 shouldBe listOf(2, 2, 2, 2, 0)
-
+        result1 shouldBe listOf(1, 1, 1, 1, 0)
         val result2 = evaluateGuess("crate", "trace")
-        result2 shouldBe listOf(1, 2, 2, 1, 2)
-
+        result2 shouldBe listOf(0, 1, 1, 0, 1)
         val result3 = evaluateGuess("words", "sword")
-        result3 shouldBe listOf(1, 1, 1, 1, 1)
+        result3 shouldBe listOf(0, 0, 0, 0, 0)
     }
 
     "pickRandomWord should remove the chosen word from list" {
@@ -40,10 +38,10 @@ class WordleTest : StringSpec({
 
     "displayGuess should not throw any exceptions" {
         val guess = "apple"
-        val matches = listOf(2, 1, 0, 1, 0)
-        withClue("Display function should print safely") {
+        val matches = listOf(1, 1, 0, 1, 0)
+        withClue("Display function should print safely and handle '?' for non-matches") {
             displayGuess(guess, matches)
-            true shouldBe true // dummy assertion to pass
+            true shouldBe true   
         }
     }
 })
