@@ -16,5 +16,5 @@ fun main() {
         }
     }
 
-    println("💀 Sorry! You've used all attempts. The correct word was '$target'.")
+    println("Sorry! You've used all attempts. The correct word was '$target'.")
 }

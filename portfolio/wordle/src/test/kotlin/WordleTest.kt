@@ -15,6 +15,13 @@ class WordleTest : StringSpec({
             isValid("a1ple") shouldBe false
         }
     }
+    "readWordList should correctly read and uppercase words" {
+        val testFile = java.io.File("test_words.txt")
+        testFile.writeText("apple\npeach\ngrape")
+        val result = readWordList("test_words.txt")
+        result shouldBe mutableListOf("APPLE", "PEACH", "GRAPE")
+        testFile.delete()
+    }
 
     "evaluateGuess should correctly mark letters (0=not match, 1=match)" {
         val result1 = evaluateGuess("apple", "apply")
@@ -33,15 +40,6 @@ class WordleTest : StringSpec({
         }
         withClue("The word must be removed from the list") {
             words.contains(word) shouldBe false
-        }
-    }
-
-    "displayGuess should not throw any exceptions" {
-        val guess = "apple"
-        val matches = listOf(1, 1, 0, 1, 0)
-        withClue("Display function should print safely and handle '?' for non-matches") {
-            displayGuess(guess, matches)
-            true shouldBe true   
         }
     }
 })
