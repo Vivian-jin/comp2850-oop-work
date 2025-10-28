@@ -1,4 +1,6 @@
-fun isValid(word: String): Boolean = word.length == 5 && word.all { it.isLetter() }
+const val WORD_LENGTH = 5
+
+fun isValid(word: String): Boolean = word.length == WORD_LENGTH && word.all { it.isLetter() }
 
 fun readWordList(filename: String): MutableList<String> = java.io
     .File(filename)
